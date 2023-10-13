@@ -11,8 +11,8 @@
     <title>Soda Vision Protótipo</title>
 
     
-  <script type="module" crossorigin src="./assets/index-7705490e.js"></script>
-  <link rel="stylesheet" href="./assets/index-4272070b.css">
+  <script type="module" crossorigin src="./assets/index-58b399a3.js"></script>
+  <link rel="stylesheet" href="./assets/index-fec91d22.css">
 </head>
 
 <body>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="area">
-            <div class="card bg-white-box">
+            <div id="card-preparation" class="card bg-white-box">
                 <h4>PREPARAÇÃO</h4>
 
                 <div class="preparing">
@@ -43,16 +43,16 @@
                         <input type="file" accept="video/*" id="process-video-file" />
                     </div>
                     <div id="mask-container">
-                        <svg id="draw" width="462px" height="260px" viewBox="0 0 462 260"
+                        <svg id="draw" width="400px" height="400px" viewBox="0 0 400 400"
                             xmlns="http://www.w3.org/2000/svg">
-                            <rect id="marquee-line" x="0" y="0" width="462" height="260" fill-opacity="0"></rect>
+                            <rect id="marquee-line" x="0" y="0" width="400" height="400" fill-opacity="0"></rect>
                             <defs>
                                 <mask id="marquee-mask">
-                                    <rect x="0" y="0" width="462" height="260" fill="white"></rect>
-                                    <rect id="marquee" x="0" y="0" width="462" height="260" fill="black"></rect>
+                                    <rect x="0" y="0" width="400" height="400" fill="white"></rect>
+                                    <rect id="marquee" x="0" y="0" width="400" height="400" fill="black"></rect>
                                 </mask>
                             </defs>
-                            <rect x="0" y="0" width="462" height="260" fill="black" mask="url(#marquee-mask)"
+                            <rect x="0" y="0" width="400" height="400" fill="black" mask="url(#marquee-mask)"
                                 fill-opacity="0.7"></rect>
                         </svg>
                         <div class="tooltip">
@@ -66,7 +66,7 @@
                     </div>
                     <span id="video-dimensions" class="video-dimensions">x: 0, y: 0, largura: 0, altura: 0</span>
                     <div class="progress-container">
-                        <div id="progress-bar"></div>
+                        <div id="progress-bar" class="progress-bar"></div>
                     </div>
                     <label for="class-name">Digite o nome da classe:</label>
                     <input type="text" maxlength="23" id="class-name" />
@@ -164,7 +164,7 @@
                 </div>
             </div>
 
-            <div class="card bg-white-box">
+            <div id="card-classification" class="card bg-white-box">
                 <h4>CLASSIFICAÇÃO</h4>
 
                 <div class="predict">
@@ -180,18 +180,18 @@
                     </div>
 
                     <div id="mask-container-validation">
-                        <svg id="draw-validation" width="462px" height="260px" viewBox="0 0 462 260"
+                        <svg id="draw-validation" width="400px" height="400px" viewBox="0 0 400 400"
                             xmlns="http://www.w3.org/2000/svg">
-                            <rect id="marquee-line-validation" x="0" y="0" width="462" height="260" fill-opacity="0">
+                            <rect id="marquee-line-validation" x="0" y="0" width="400" height="400" fill-opacity="0">
                             </rect>
                             <defs>
                                 <mask id="marquee-mask-validation">
-                                    <rect x="0" y="0" width="462" height="260" class="" fill="white"></rect>
-                                    <rect id="marquee-validation" x="0" y="0" width="462" height="260" fill="black">
+                                    <rect x="0" y="0" width="400" height="400" class="" fill="white"></rect>
+                                    <rect id="marquee-validation" x="0" y="0" width="400" height="400" fill="black">
                                     </rect>
                                 </mask>
                             </defs>
-                            <rect x="0" y="0" width="462" height="260" fill="black" mask="url(#marquee-mask-validation)"
+                            <rect x="0" y="0" width="400" height="400" fill="black" mask="url(#marquee-mask-validation)"
                                 fill-opacity="0.7"></rect>
                         </svg>
                         <video id="validation-video" hidden preload="metadata" muted></video>
