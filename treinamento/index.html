@@ -11,8 +11,8 @@
     <title>Soda Vision Protótipo</title>
 
     
-  <script type="module" crossorigin src="./assets/index-58b399a3.js"></script>
-  <link rel="stylesheet" href="./assets/index-fec91d22.css">
+  <script type="module" crossorigin src="./assets/index-6c0b30c0.js"></script>
+  <link rel="stylesheet" href="./assets/index-c00d23b2.css">
 </head>
 
 <body>
@@ -45,6 +45,10 @@
                     <div id="mask-container">
                         <svg id="draw" width="400px" height="400px" viewBox="0 0 400 400"
                             xmlns="http://www.w3.org/2000/svg">
+                            <g id="stop-icon" class="hidden">
+                                <rect  x="10" y="370" width="20" height="20" fill-opacity="1" fill="white"></rect>
+                                <text x="36" y="386" fill="white">STOP</text>
+                            </g>
                             <rect id="marquee-line" x="0" y="0" width="400" height="400" fill-opacity="0"></rect>
                             <defs>
                                 <mask id="marquee-mask">
@@ -66,7 +70,7 @@
                     </div>
                     <span id="video-dimensions" class="video-dimensions">x: 0, y: 0, largura: 0, altura: 0</span>
                     <div class="progress-container">
-                        <div id="progress-bar" class="progress-bar"></div>
+                        <div id="progress-bar" class="progress-bar progress-bar-start"></div>
                     </div>
                     <label for="class-name">Digite o nome da classe:</label>
                     <input type="text" maxlength="23" id="class-name" />
@@ -81,8 +85,8 @@
                     <div id="card-classes"></div>
                 </div>
 
-                <div class="training-progress-container">
-                    <div id="training-progress-bar"></div>
+                <div class="progress-container">
+                    <div id="training-progress-bar" class="progress-bar progress-bar-start"></div>
                 </div>
 
                 <button class="button w3-black" id="train" disabled>Treinar</button>
@@ -182,6 +186,11 @@
                     <div id="mask-container-validation">
                         <svg id="draw-validation" width="400px" height="400px" viewBox="0 0 400 400"
                             xmlns="http://www.w3.org/2000/svg">
+                            <g id="pause-icon-validation" class="hidden">
+                                <rect  x="10" y="370" width="8" height="20" fill-opacity="1" fill="white"></rect>
+                                <rect  x="22" y="370" width="8" height="20" fill-opacity="1" fill="white"></rect>
+                                <text x="36" y="386" fill="white">PAUSE</text>
+                            </g>
                             <rect id="marquee-line-validation" x="0" y="0" width="400" height="400" fill-opacity="0">
                             </rect>
                             <defs>
