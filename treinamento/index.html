@@ -1,224 +1,297 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="logo_sv.svg" />
 
-    <link rel="icon" type="image/svg+xml" href="logo_sv.svg" />
-    
-    
-    <title>Soda Vision Protótipo</title>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
-    
-  <script type="module" crossorigin src="./assets/index-6c0b30c0.js"></script>
-  <link rel="stylesheet" href="./assets/index-c00d23b2.css">
-</head>
+        <title>Soda Vision Protótipo</title>
 
-<body>
-    <main>
-        <div class="toast w3-panel" id="status">
-            <p>Carregando TensorFlow.js...</p>
-        </div>
+        
+      <script type="module" crossorigin src="./assets/index-14f6be53.js"></script>
+      <link rel="stylesheet" href="./assets/index-88a83e1b.css">
+    </head>
 
-        <div class="title">
-            <img src="logo_sv.svg" id="logo-sodavision">
-            <h1>SODA Vision Protótipo</h1>
-        </div>
+    <body>
+        <main>
+            <div id="toast-status" class="toast w3-panel">
+                <p>Carregando TensorFlow.js...</p>
+            </div>
 
-        <div class="area">
-            <div id="card-preparation" class="card bg-white-box">
-                <h4>PREPARAÇÃO</h4>
+            <div class="title">
+                <img class="img-logo-sodavision" src="logo_sv.svg" />
+                <h1>SODA Vision Protótipo</h1>
+            </div>
 
-                <div class="preparing">
-                    <label for="process-video-file">Carregue e processe um vídeo por vez, contendo imagens do que
-                        será
-                        reconhecido. A partir destas imagens que o modelo será capaz de aprender a
-                        classificar.</label>
+            <div class="area">
+                <div id="card-preparation" class="card card-border-bg-box">
                     <div class="tooltip">
                         <span class="tooltiptext">
-                            Para funcionar corretamente, é muito importante que todos os vídeos tenham sido capturados
-                            pela mesma câmera e tenham as mesmas dimensões.
+                            Carregue e processe um vídeo por vez. Cada vídeo equivale a uma classe, então prepare antes o vídeo para conter várias
+                            imagens do que você quer que seja classificado.
                         </span>
-                        <input type="file" accept="video/*" id="process-video-file" />
+                        <h4>PREPARAÇÃO DOS DADOS</h4>
                     </div>
-                    <div id="mask-container">
-                        <svg id="draw" width="400px" height="400px" viewBox="0 0 400 400"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <g id="stop-icon" class="hidden">
-                                <rect  x="10" y="370" width="20" height="20" fill-opacity="1" fill="white"></rect>
-                                <text x="36" y="386" fill="white">STOP</text>
-                            </g>
-                            <rect id="marquee-line" x="0" y="0" width="400" height="400" fill-opacity="0"></rect>
-                            <defs>
-                                <mask id="marquee-mask">
-                                    <rect x="0" y="0" width="400" height="400" fill="white"></rect>
-                                    <rect id="marquee" x="0" y="0" width="400" height="400" fill="black"></rect>
-                                </mask>
-                            </defs>
-                            <rect x="0" y="0" width="400" height="400" fill="black" mask="url(#marquee-mask)"
-                                fill-opacity="0.7"></rect>
-                        </svg>
+
+                    <div class="preparing">
                         <div class="tooltip">
-                            <span id="video-tooltip" class="tooltiptext tooltip-hidden">
-                                Caso queira selecionar apenas parte da imagem para que o restante seja descartado,
-                                clique e arraste sobre o vídeo para delimitar uma região de interesse. Para desfazer a
-                                seleção apenas clique sobre o vídeo.
+                            <span class="tooltiptext">
+                                Para funcionar corretamente, é muito importante que todos os vídeos tenham sido capturados pela mesma câmera e tenham
+                                as mesmas dimensões.
                             </span>
-                            <video id="process-video" hidden preload="metadata" muted></video>
+                            <input id="input-file-video-preparation" type="file" accept="video/*" />
+                        </div>
+                        <div id="container-marquee-preparation" class="container-marquee">
+                            <svg
+                                id="svg-marquee-preparation"
+                                class="svg-marquee"
+                                width="400px"
+                                height="400px"
+                                viewBox="0 0 400 400"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g id="svg-icon-stop-preparation" class="hidden">
+                                    <rect x="10" y="370" width="20" height="20" fill-opacity="1" fill="white"></rect>
+                                    <text x="36" y="386" fill="white">Clique para interromper</text>
+                                </g>
+                                <rect
+                                    id="svg-line-marquee-preparation"
+                                    class="svg-line-marquee"
+                                    x="0"
+                                    y="0"
+                                    width="400"
+                                    height="400"
+                                    fill-opacity="0"></rect>
+                                <defs>
+                                    <mask id="svg-mask-marquee-preparation">
+                                        <rect x="0" y="0" width="400" height="400" fill="white"></rect>
+                                        <rect id="marquee" x="0" y="0" width="400" height="400" fill="black"></rect>
+                                    </mask>
+                                </defs>
+                                <rect
+                                    x="0"
+                                    y="0"
+                                    width="400"
+                                    height="400"
+                                    fill="black"
+                                    mask="url(#svg-mask-marquee-preparation)"
+                                    fill-opacity="0.7"></rect>
+                            </svg>
+                            <div class="tooltip">
+                                <span id="tooltip-video-preparation" class="tooltiptext fix-tooltip-video-preparation tooltip-hidden">
+                                    Caso queira selecionar apenas parte da imagem para que o restante seja descartado, clique e arraste sobre o vídeo
+                                    para delimitar uma região de interesse. Para desfazer a seleção apenas clique sobre o vídeo.
+                                </span>
+                                <video id="video-preparation" preload="metadata" muted hidden></video>
+                            </div>
+                        </div>
+                        <span id="text-video-dimensions" class="container-video-dimensions">x: 0, y: 0, largura: 0, altura: 0</span>
+                        <div class="container-progress-bar-preparation">
+                            <div id="progress-bar-preparation" class="progress-bar progress-bar-start"></div>
+                        </div>
+                        <div class="tooltip">
+                            <span class="tooltiptext">Digite um nome para a sua classe. Usando no máximo 23 caracteres.</span>
+                            <label for="input-class-name">Digite o nome da classe:</label>
+                            <input id="input-class-name" type="text" maxlength="23" />
+                        </div>
+                        <div class="tooltip">
+                            <span class="tooltiptext">
+                                Neste modo o treinamento já ocorre ao processar o vídeo, o que é mais rápido, porém menos preciso.
+                            </span>
+                            <label class="container-checkbox">
+                                Modo Expresso
+                                <input id="input-express-mode" type="checkbox" />
+                                <span class="checkmark"></span>
+                            </label>
                         </div>
                     </div>
-                    <span id="video-dimensions" class="video-dimensions">x: 0, y: 0, largura: 0, altura: 0</span>
-                    <div class="progress-container">
-                        <div id="progress-bar" class="progress-bar progress-bar-start"></div>
+                    <div id="container-button-process-preparation-video" class="tooltip">
+                        <span class="tooltiptext">
+                            Clique para capturar as features dos frames do vídeo. <br />
+                            Para processar apenas até uma parte, clique no vídeo para interromper a captura até aquele momento.
+                        </span>
+                        <button id="button-process-preparation-video" class="button w3-black" disabled>Processar</button>
                     </div>
-                    <label for="class-name">Digite o nome da classe:</label>
-                    <input type="text" maxlength="23" id="class-name" />
-                </div>
-                <button class="button w3-black" id="process-class" disabled>Processar</button>
-            </div>
-
-            <div class="card bg-white-box">
-                <h4>TREINAMENTO</h4>
-
-                <div class="training">
-                    <div id="card-classes"></div>
                 </div>
 
-                <div class="progress-container">
-                    <div id="training-progress-bar" class="progress-bar progress-bar-start"></div>
-                </div>
+                <div class="card card-border-bg-box">
+                    <div class="tooltip">
+                        <span class="tooltiptext"> Tendo de 2 a 12 classes você pode dar início ao treinamento do modelo. </span>
+                        <h4>TREINAMENTO DE MODELO DE IA</h4>
+                    </div>
 
-                <button class="button w3-black" id="train" disabled>Treinar</button>
-                <button id="advanced-parameters-label">--- Parâmetros Avançados ---</button>
+                    <div class="training">
+                        <div id="card-classes" class="container-card-classes"></div>
+                    </div>
 
-                <div id="advanced-parameters" class="advanced">
-                    <span>
-                        Épocas:
-                        <div class="input-holder">
-                            <div class="tooltip">
-                                <span class="tooltiptext">
-                                    Uma época significa que cada amostra do conjunto de dados de treinamento foi
-                                    alimentada no modelo de treinamento pelo menos uma vez. Se suas épocas estiverem
-                                    definidas como 50, por exemplo, isso significa que o modelo que você está treinando
-                                    trabalhará com o conjunto de dados de treinamento inteiro 50 vezes. Geralmente,
-                                    quanto maior o número, melhor o seu modelo aprenderá a prever os dados. Você
-                                    provavelmente vai querer ajustar (geralmente aumentar) esse número até obter bons
-                                    resultados preditivos com o seu modelo.
-                                </span>
-                                <input type="number" id="input-epochs" min="1" maxlength="4" max="9999" value="10"
-                                    disabled>
+                    <div class="container-progress-bar-preparation">
+                        <div id="progress-bar-training" class="progress-bar progress-bar-start"></div>
+                    </div>
+
+                    <button id="button-train" class="button w3-black" disabled>Treinar</button>
+                    <button id="label-advanced-parameters" class="label-advanced-parameters">--- Parâmetros Avançados ---</button>
+
+                    <div id="container-advanced-parameters" class="advanced">
+                        <span>
+                            Épocas:
+                            <div class="input-holder">
+                                <div class="tooltip">
+                                    <span class="tooltiptext">
+                                        Uma época significa que cada amostra do conjunto de dados de treinamento foi alimentada no modelo de
+                                        treinamento pelo menos uma vez. Se suas épocas estiverem definidas como 50, por exemplo, isso significa que o
+                                        modelo que você está treinando trabalhará com o conjunto de dados de treinamento inteiro 50 vezes. Geralmente,
+                                        quanto maior o número, melhor o seu modelo aprenderá a prever os dados. Você provavelmente vai querer ajustar
+                                        (geralmente aumentar) esse número até obter bons resultados preditivos com o seu modelo.
+                                    </span>
+                                    <input id="input-epochs" type="number" min="1" maxlength="4" max="9999" value="10" disabled />
+                                </div>
                             </div>
-                        </div>
-                    </span>
+                        </span>
 
-                    <span>
-                        Tamanho de Lote:
-                        <div class="input-holder">
-                            <div class="tooltip">
-                                <span class="tooltiptext">
-                                    Refere-se à quantidade de dados que você passa para o modelo de uma vez. Imagine que
-                                    você está tentando ensinar alguém a identificar diferentes tipos de frutas. Em vez
-                                    de mostrar todas as frutas de uma só vez, você poderia mostrar um grupo (ou "lote")
-                                    de, digamos, 10 frutas por vez. Esse "grupo" de 10 frutas seria o equivalente ao
-                                    "batch size" em aprendizado profundo. Dessa forma, em um contexto de aprendizado de
-                                    máquina, o "batch size" refere-se à quantidade de dados de treinamento que passamos
-                                    para a rede neural de uma vez antes de atualizar os pesos e vieses internos do
-                                    modelo. Um tamanho de lote pequeno pode tornar o modelo mais capaz de aprender
-                                    padrões complexos, mas pode ser mais lento e menos estável. Um tamanho de lote
-                                    grande pode ser mais rápido e mais estável, mas pode não ser capaz de aprender
-                                    padrões mais complexos.
-                                </span>
-                                <select id="select-input-batch" name="batch-size" disabled>
-                                    <option value="4" selected=""> 4 </option>
-                                    <option value="16"> 16 </option>
-                                    <option value="32"> 32 </option>
-                                    <option value="64"> 64 </option>
-                                </select>
+                        <span>
+                            Tamanho de Lote:
+                            <div class="input-holder">
+                                <div class="tooltip">
+                                    <span class="tooltiptext">
+                                        Refere-se à quantidade de dados que você passa para o modelo de uma vez. Imagine que você está tentando
+                                        ensinar alguém a identificar diferentes tipos de frutas. Em vez de mostrar todas as frutas de uma só vez, você
+                                        poderia mostrar um grupo (ou "lote") de, digamos, 10 frutas por vez. Esse "grupo" de 10 frutas seria o
+                                        equivalente ao "batch size" em aprendizado profundo. Dessa forma, em um contexto de aprendizado de máquina, o
+                                        "batch size" refere-se à quantidade de dados de treinamento que passamos para a rede neural de uma vez antes
+                                        de atualizar os pesos e vieses internos do modelo. Um tamanho de lote pequeno pode tornar o modelo mais capaz
+                                        de aprender padrões complexos, mas pode ser mais lento e menos estável. Um tamanho de lote grande pode ser
+                                        mais rápido e mais estável, mas pode não ser capaz de aprender padrões mais complexos.
+                                    </span>
+                                    <select id="select-input-batch" name="batch-size" disabled>
+                                        <option value="4" selected="">4</option>
+                                        <option value="16">16</option>
+                                        <option value="32">32</option>
+                                        <option value="64">64</option>
+                                    </select>
+                                </div>
                             </div>
-                        </div>
-                    </span>
+                        </span>
 
-                    <span>
-                        Taxa de Aprendizado:
-                        <div class="input-holder">
-                            <div class="tooltip">
-                                <span class="tooltiptext">
-                                    Basicamente, determina o quão rápido ou lento um modelo de aprendizado de máquina
-                                    aprende um problema específico. Para simplificar, imagine que você está tentando
-                                    chegar a um destino específico andando em uma paisagem montanhosa e com muitos vales
-                                    (esses vales podem ser vistos como os erros que o modelo tenta minimizar). A taxa de
-                                    aprendizado é o tamanho dos passos que você dá enquanto caminha. Se você der passos
-                                    muito grandes (ou seja, uma taxa de aprendizado alta), pode pular o vale e acabar em
-                                    outro lado da montanha, sem realmente chegar ao fundo do vale, que é o ponto de erro
-                                    mínimo que você quer alcançar. Por outro lado, se você der passos muito pequenos (ou
-                                    seja, uma taxa de aprendizado baixa), pode levar muito tempo para chegar ao vale, ou
-                                    você pode ficar preso em um vale pequeno, mas não no mais profundo. Portanto,
-                                    escolher a taxa de aprendizado correta é importante. Uma taxa muito alta pode fazer
-                                    o modelo aprender muito rapidamente, mas também pode levar a resultados imprecisos.
-                                    Uma taxa muito baixa pode fazer o modelo aprender com precisão, mas pode levar muito
-                                    tempo para treinar. Normalmente, é um desafio encontrar um equilíbrio adequado.
-                                </span>
-                                <input type="number" id="input-learning-rate" min="0.00001" max="0.1" value="0.001"
-                                    step="0.00001" disabled>
+                        <span>
+                            Taxa de Aprendizado:
+                            <div class="input-holder">
+                                <div class="tooltip">
+                                    <span class="tooltiptext">
+                                        Basicamente, determina o quão rápido ou lento um modelo de aprendizado de máquina aprende um problema
+                                        específico. Para simplificar, imagine que você está tentando chegar a um destino específico andando em uma
+                                        paisagem montanhosa e com muitos vales (esses vales podem ser vistos como os erros que o modelo tenta
+                                        minimizar). A taxa de aprendizado é o tamanho dos passos que você dá enquanto caminha. Se você der passos
+                                        muito grandes (ou seja, uma taxa de aprendizado alta), pode pular o vale e acabar em outro lado da montanha,
+                                        sem realmente chegar ao fundo do vale, que é o ponto de erro mínimo que você quer alcançar. Por outro lado, se
+                                        você der passos muito pequenos (ou seja, uma taxa de aprendizado baixa), pode levar muito tempo para chegar ao
+                                        vale, ou você pode ficar preso em um vale pequeno, mas não no mais profundo. Portanto, escolher a taxa de
+                                        aprendizado correta é importante. Uma taxa muito alta pode fazer o modelo aprender muito rapidamente, mas
+                                        também pode levar a resultados imprecisos. Uma taxa muito baixa pode fazer o modelo aprender com precisão, mas
+                                        pode levar muito tempo para treinar. Normalmente, é um desafio encontrar um equilíbrio adequado.
+                                    </span>
+                                    <input id="input-learning-rate" type="number" min="0.00001" max="0.1" value="0.001" step="0.00001" disabled />
+                                </div>
                             </div>
-                        </div>
-                    </span>
-
+                        </span>
+                    </div>
                 </div>
-            </div>
 
-            <div id="card-classification" class="card bg-white-box">
-                <h4>CLASSIFICAÇÃO</h4>
-
-                <div class="predict">
-                    <label for="validation-video-file">Carregue o vídeo que deseja classificar o conteúdo. Esta é uma
-                        importante etapa pra validar se o treinamento foi bem sucedido. Experimente usar tendo mais de
-                        uma classe no mesmo vídeo.</label>
+                <div id="card-classification" class="card card-border-bg-box" hidden>
                     <div class="tooltip">
                         <span class="tooltiptext">
-                            Para funcionar corretamente, é muito importante que todos os vídeos tenham sido capturados
-                            pela mesma câmera e tenham as mesmas dimensões.
+                            Esta é uma importante etapa pra avaliar se o treinamento foi bem sucedido. Experimente fazer um vídeo de avaliação tendo
+                            mais de uma classe para conseguir ver o modelo classificando diferentes coisas.
                         </span>
-                        <input type="file" accept="video/*" id="validation-video-file" disabled />
+                        <h4>AVALIAÇÃO DO MODELO</h4>
                     </div>
 
-                    <div id="mask-container-validation">
-                        <svg id="draw-validation" width="400px" height="400px" viewBox="0 0 400 400"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <g id="pause-icon-validation" class="hidden">
-                                <rect  x="10" y="370" width="8" height="20" fill-opacity="1" fill="white"></rect>
-                                <rect  x="22" y="370" width="8" height="20" fill-opacity="1" fill="white"></rect>
-                                <text x="36" y="386" fill="white">PAUSE</text>
-                            </g>
-                            <rect id="marquee-line-validation" x="0" y="0" width="400" height="400" fill-opacity="0">
-                            </rect>
-                            <defs>
-                                <mask id="marquee-mask-validation">
-                                    <rect x="0" y="0" width="400" height="400" class="" fill="white"></rect>
-                                    <rect id="marquee-validation" x="0" y="0" width="400" height="400" fill="black">
-                                    </rect>
-                                </mask>
-                            </defs>
-                            <rect x="0" y="0" width="400" height="400" fill="black" mask="url(#marquee-mask-validation)"
-                                fill-opacity="0.7"></rect>
-                        </svg>
-                        <video id="validation-video" hidden preload="metadata" muted></video>
+                    <div class="evaluate">
+                        <label for="input-file-video-evaluation"> Carregue o vídeo que deseja classificar o conteúdo. </label>
+                        <div class="tooltip">
+                            <span class="tooltiptext">
+                                Para funcionar corretamente, é muito importante que todos os vídeos tenham sido capturados pela mesma câmera e tenham
+                                as mesmas dimensões.
+                            </span>
+                            <input id="input-file-video-evaluation" type="file" accept="video/*" disabled />
+                        </div>
+
+                        <div id="container-marquee-evaluation" class="container-marquee">
+                            <svg
+                                id="svg-marquee-evaluation"
+                                class="svg-marquee"
+                                width="400px"
+                                height="400px"
+                                viewBox="0 0 400 400"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g id="svg-icon-pause-evaluation" class="hidden">
+                                    <rect x="10" y="370" width="8" height="20" fill-opacity="1" fill="white"></rect>
+                                    <rect x="22" y="370" width="8" height="20" fill-opacity="1" fill="white"></rect>
+                                    <text x="36" y="386" fill="white">Clique para pausar</text>
+                                </g>
+                                <rect
+                                    id="svg-line-marquee-evaluation"
+                                    class="svg-line-marquee"
+                                    x="0"
+                                    y="0"
+                                    width="400"
+                                    height="400"
+                                    fill-opacity="0"></rect>
+                                <defs>
+                                    <mask id="svg-mask-marquee-evaluation">
+                                        <rect x="0" y="0" width="400" height="400" class="" fill="white"></rect>
+                                        <rect id="marquee-evaluation" x="0" y="0" width="400" height="400" fill="black"></rect>
+                                    </mask>
+                                </defs>
+                                <rect
+                                    x="0"
+                                    y="0"
+                                    width="400"
+                                    height="400"
+                                    fill="black"
+                                    mask="url(#svg-mask-marquee-evaluation)"
+                                    fill-opacity="0.7"></rect>
+                            </svg>
+                            <video id="video-evaluation" preload="metadata" muted hidden></video>
+                        </div>
+                        <p id="text-evaluation-accuracy"></p>
                     </div>
-                    <p id="accuracy-text"></p>
-                                    </div>
-                <button class="button w3-black" id="predict" disabled>Predizer!</button>
-                <button class="button w3-black" id="export" disabled>EXPORTAR</button>
+                    <button id="button-predict" class="button w3-black" disabled>Predizer!</button>
+                    <button id="button-export" class="button w3-black" disabled>EXPORTAR</button>
+                    <button id="label-advanced-parameters-evaluation" class="label-advanced-parameters">--- Parâmetros Avançados ---</button>
+                    <div id="container-advanced-parameters-evaluation" class="advanced">
+                        <span>
+                            Filtro:
+                            <div class="input-holder">
+                                <div class="tooltip">
+                                    <span class="tooltiptext">
+                                        Este número define o a quantidade de classificações seguidas que devem ser feitas antes de considerar o valor
+                                        como válido. Utilize este filtro para evitar falsos positivos. Lembrando que valores maiores farão com que
+                                        demore para reconhecer as mudanças de predição.
+                                    </span>
+                                    <input id="input-filter" max="9999" maxlength="4" min="2" type="number" value="2" />
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                </div>
             </div>
 
-        </div>
+            <div id="container-console" class="card card-border-bg-box console">
+                <h4>CONSOLE LOG</h4>
 
-        <div class="card bg-white-box console">
-            <h4>CONSOLE LOG</h4>
-
-            <div id="log"></div>
-        </div>
-    </main>
-</body>
-
+                <div id="console-log" class="terminal-log"></div>
+            </div>
+        </main>
+    </body>
 </html>
