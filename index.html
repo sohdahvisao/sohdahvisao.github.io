@@ -9,7 +9,7 @@
         
         <title>Soda Vision Protótipo Inferência</title>
         
-      <script type="module" crossorigin src="./assets/index-0e1b3b44.js"></script>
+      <script type="module" crossorigin src="./assets/index-14565458.js"></script>
       <link rel="stylesheet" href="./assets/index-0c8f6884.css">
     </head>
     <body>
@@ -21,64 +21,27 @@
                 <div></div>
                 <div class="card bg-white-box">
                     <h3>INFERÊNCIA | CLASSIFICAÇÃO</h3>
-                    <label for="model-upload"
-                        >Selecione o modelo treinado.</label
-                    >
+                    <label for="model-upload">Selecione o modelo treinado.</label>
                     <p></p>
                     <div class="tooltip">
                         <span class="tooltiptext">
-                            Para funcionar corretamente, é muito importante que
-                            todos os vídeos tenham sido capturados pela mesma
-                            câmera e tenham as mesmas dimensões.
+                            Para funcionar corretamente, é muito importante que todos os vídeos tenham sido capturados pela mesma câmera e tenham as
+                            mesmas dimensões.
                         </span>
                         <input accept=".zip" id="model-upload" type="file" />
                         <p></p>
                     </div>
                     <div class="predict">
                         <div class="switch-wrapper" id="mask-container">
-                            <svg
-                                height="400px"
-                                id="draw"
-                                viewbox="0 0 400 400"
-                                width="400px"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <rect
-                                    fill-opacity="0"
-                                    height="400"
-                                    id="marquee-line"
-                                    width="400"
-                                    x="0"
-                                    y="0"
-                                ></rect>
+                            <svg height="400px" id="draw" viewbox="0 0 400 400" width="400px" xmlns="http://www.w3.org/2000/svg">
+                                <rect fill-opacity="0" height="400" id="marquee-line" width="400" x="0" y="0"></rect>
                                 <defs>
                                     <mask id="marquee-mask">
-                                        <rect
-                                            fill="white"
-                                            height="400"
-                                            width="400"
-                                            x="0"
-                                            y="0"
-                                        ></rect>
-                                        <rect
-                                            fill="black"
-                                            height="400"
-                                            id="marquee"
-                                            width="400"
-                                            x="0"
-                                            y="0"
-                                        ></rect>
+                                        <rect fill="white" height="400" width="400" x="0" y="0"></rect>
+                                        <rect fill="black" height="400" id="marquee" width="400" x="0" y="0"></rect>
                                     </mask>
                                 </defs>
-                                <rect
-                                    fill="black"
-                                    fill-opacity="0.7"
-                                    height="400"
-                                    mask="url(#marquee-mask)"
-                                    width="400"
-                                    x="0"
-                                    y="0"
-                                ></rect>
+                                <rect fill="black" fill-opacity="0.7" height="400" mask="url(#marquee-mask)" width="400" x="0" y="0"></rect>
                             </svg>
                             <svg
                                 class="pause-video-hidden"
@@ -86,29 +49,12 @@
                                 id="pause-video"
                                 viewbox="0 0 400 400"
                                 width="400px"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <rect
-                                    fill="black"
-                                    fill-opacity="0.7"
-                                    height="400"
-                                    width="400"
-                                    x="0"
-                                    y="0"
-                                ></rect>
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="black" fill-opacity="0.7" height="400" width="400" x="0" y="0"></rect>
                             </svg>
-                            <video
-                                autoplay=""
-                                id="validation-video"
-                                muted=""
-                                preload="metadata"
-                            ></video>
+                            <video autoplay="" id="validation-video" muted="" preload="metadata"></video>
                             <label class="switch">
-                                <input
-                                    checked=""
-                                    id="enable-webcam"
-                                    type="checkbox"
-                                />
+                                <input checked="" id="enable-webcam" type="checkbox" />
                                 <span class="slider round"></span>
                             </label>
                         </div>
@@ -118,34 +64,19 @@
                 <div class="card bg-white-box">
                     <h3>PREDIÇÃO</h3>
 
-                    <button class="button w3-black" disabled="" id="predict">
-                        Predizer!
-                    </button>
-                    <button id="advanced-parameters-label">
-                        --- Parametros Avançados ---
-                    </button>
+                    <button class="button w3-black" disabled="" id="predict">Predizer!</button>
+                    <button id="advanced-parameters-label">--- Parametros Avançados ---</button>
                     <div class="advanced" id="advanced-parameters">
                         <span>
                             Filtro:
                             <div class="input-holder">
                                 <div class="tooltip">
                                     <span class="tooltiptext">
-                                        Este número define o a quantidade de
-                                        classificações seguidas que devem ser
-                                        feitas antes de considerar o valor como
-                                        válido. Utilize este filtro para evitar
-                                        falsos positivos. Lembrando que valores
-                                        maiores farão com que demore para
-                                        reconhecer as mudanças de predição.
+                                        Este número define o a quantidade de classificações seguidas que devem ser feitas antes de considerar o valor
+                                        como válido. Utilize este filtro para evitar falsos positivos. Lembrando que valores maiores farão com que
+                                        demore para reconhecer as mudanças de predição.
                                     </span>
-                                    <input
-                                        id="input-filter"
-                                        max="9999"
-                                        maxlength="4"
-                                        min="2"
-                                        type="number"
-                                        value="2"
-                                    />
+                                    <input id="input-filter" max="9999" maxlength="4" min="2" type="number" value="2" />
                                 </div>
                             </div>
                         </span>
@@ -154,21 +85,10 @@
                             <div class="input-holder">
                                 <div class="tooltip">
                                     <span class="tooltiptext">
-                                        Este numero define quantos registro
-                                        serão acumulados antes de salvar um
-                                        arquivo zip com um log das predições e
-                                        imagens. Vale o que acontecer primeiro,
-                                        a quantidade de registros ou a diferença
-                                        de timestamp.
+                                        Este numero define quantos registro serão acumulados antes de salvar um arquivo zip com um log das predições e
+                                        imagens. Vale o que acontecer primeiro, a quantidade de registros ou a diferença de timestamp.
                                     </span>
-                                    <input
-                                        id="input-save-frequency"
-                                        max="9999"
-                                        maxlength="4"
-                                        min="1"
-                                        type="number"
-                                        value="10"
-                                    />
+                                    <input id="input-save-frequency" max="9999" maxlength="4" min="1" type="number" value="10" />
                                 </div>
                             </div>
                         </span>
@@ -177,49 +97,28 @@
                             <div class="input-holder">
                                 <div class="tooltip">
                                     <span class="tooltiptext">
-                                        Este numero define a cada quantos
-                                        minutos a diferença do timestamp dos
-                                        registros serão comparados antes de
-                                        salvar um arquivo zip com um log das
-                                        predições e imagens. Vale o que
-                                        acontecer primeiro, a quantidade de
+                                        Este numero define a cada quantos minutos a diferença do timestamp dos registros serão comparados antes de
+                                        salvar um arquivo zip com um log das predições e imagens. Vale o que acontecer primeiro, a quantidade de
                                         registros ou a diferença de timestamp.
                                     </span>
-                                    <input
-                                        id="input-save-minutes"
-                                        max="999"
-                                        maxlength="3"
-                                        min="1"
-                                        type="number"
-                                        value="10"
-                                    />
+                                    <input id="input-save-minutes" max="999" maxlength="3" min="1" type="number" value="10" />
                                 </div>
                             </div>
                         </span>
                     </div>
-                    <button id="recording-parameters-label">
-                        --- Gravar Vídeo ---
-                    </button>
+                    <button id="recording-parameters-label">--- Gravar Vídeo ---</button>
                     <div class="recording" id="recording-parameters">
-                        <label for="model-upload"
-                            >Você pode gravar vídeos por aqui para utilizar no
-                            treinamento.</label
-                        >
+                        <label for="model-upload">Você pode gravar vídeos por aqui para utilizar no treinamento.</label>
                         <button class="button w3-black" id="capture-video">
-                            <img id="rec-icon" src="rec.gif" height="50px" hidden/>
+                            <img id="rec-icon" src="rec.gif" height="50px" hidden />
                             <span>Capturar Vídeo</span>
                         </button>
                         <span>
                             Nome do Vídeo:
                             <div class="input-holder">
                                 <div class="tooltip">
-                                    <span class="tooltiptext"> </span>
-                                    <input
-                                        id="video-name"
-                                        type="text"
-                                        value="sodavision"
-                                        maxlength="23"
-                                    />
+                                    <span class="tooltiptext"> Nome que será usado pra salvar o arquivo de Vídeo</span>
+                                    <input id="video-name" type="text" value="sodavision" maxlength="23" />
                                 </div>
                             </div>
                         </span>
@@ -227,15 +126,8 @@
                             Tempo de Captura (segundos):
                             <div class="input-holder">
                                 <div class="tooltip">
-                                    <span class="tooltiptext"> </span>
-                                    <input
-                                        id="capture-time"
-                                        type="number"
-                                        min="1"
-                                        value="10"
-                                        max="9999"
-                                        maxlength="4"
-                                    />
+                                    <span class="tooltiptext"> Tempo de duração da gravação. Após esse tempo a gravação para automaticamente. </span>
+                                    <input id="capture-time" type="number" min="1" value="10" max="9999" maxlength="4" />
                                 </div>
                             </div>
                         </span>
