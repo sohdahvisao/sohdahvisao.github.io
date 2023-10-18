@@ -107,7 +107,7 @@ ffmpeg -f h264 -i ~/Desktop/nome_da_classe.h264 -c copy ~/Desktop/nome_da_classe
 
 -   Raspberry Pi 4
 -   Raspberry Pi OS - Versão 64-bit com Desktop
-    -   Pode instalar a imagem aqui: (https://downloads.raspberrypi.com/raspios_arm64/images/raspios_arm64-2023-10-10/2023-10-10-raspios-bookworm-arm64.img.xz)
+    -   Pode instalar a imagem [Clicando Aqui](https://downloads.raspberrypi.com/raspios_arm64/images/raspios_arm64-2023-10-10/2023-10-10-raspios-bookworm-arm64.img.xz)
 -   Pi Camera
 
 ### Configurando ambiente
