@@ -171,6 +171,4 @@ Redirecione o stream da libcamera-vid para esse dispositivo:
 libcamera-vid -t 0 --codec=h264 -o - | ffmpeg -i - -vf format=yuv420p -f v4l2 /dev/videoX
 ```
 
-Agora você ja deve estar apto a utilizar a RaspiCam com seu dispositivo Raspberry Pi
-
-*PS: Caso não esteja funcionando abrindo a camera, Cogite alterar o navegador.*
+Agora você ja deve estar apto a utilizar a RaspiCam com seu dispositivo Raspberry Pi *Direto no Mozilla*.
